@@ -1,0 +1,18 @@
+CREATE DATABASE MusicaEx1;
+
+USE MusicaEx1
+
+CREATE TABLE EstiloMusical(
+	IdEstilo	INT PRIMARY KEY IDENTITY,
+	NomeEstilo	VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE Artistas(
+	IdArtista	INT PRIMARY KEY IDENTITY,
+	NomeArtista	VARCHAR(200) NOT NULL
+);
+
+SELECT * FROM Artistas;
+SELECT * FROM EstiloMusical;
+
+

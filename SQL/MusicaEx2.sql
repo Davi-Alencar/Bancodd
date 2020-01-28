@@ -1,0 +1,30 @@
+CREATE DATABASE MusicaEx2;
+
+USE MusicaEx2
+
+CREATE TABLE Estilos (
+	IdEstilo	INT PRIMARY KEY IDENTITY,
+	NomeEstilo	VARCHAR(250) NOT NULL
+);
+
+CREATE TABLE Artistas (
+	IdArtista	INT PRIMARY KEY IDENTITY,
+	NomeArtista	VARCHAR(250) NOT NULL
+);
+
+CREATE TABLE Albuns (
+	IdAlbum		INT PRIMARY KEY IDENTITY,
+	NomeAlbum	VARCHAR(250) NOT NULL,
+	IdEstilo	INT FOREIGN KEY REFERENCES Estilos (IdEstilo),
+	IdArtista	INT FOREIGN KEY REFERENCES Artistas (IdArtista)
+);
+
+CREATE TABLE Usuarios (
+	IdUsuario	INT PRIMARY KEY IDENTITY,
+	NomeUsuario		VARCHAR(250) NOT NULL
+);
+
+SELECT * FROM Estilos;
+SELECT * FROM Artistas;
+SELECT * FROM Albuns;
+SELECT * FROM Usuarios;

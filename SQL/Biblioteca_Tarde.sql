@@ -46,3 +46,5 @@ DROP COLUMN Descricao;
 
 -- Excluir banco de dados
 DROP DATABASE Biblioteca_Tarde;
+
+

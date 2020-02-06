@@ -12,3 +12,15 @@ INSERT INTO Clientes (NomeCliente, Cpf) VALUES ('Agostinho','3455980284'), ('Ful
 
 INSERT INTO Alugueis (DataInicio, DataFim, IdVeiculo, IdCliente) VALUES ('17/01/2002','17/01/2004', 1, 1), ('20/08/2018', '19/10/2020', 2, 2), ('20/08/2018', '19/10/2020', 3, 3)
 
+SELECT * FROM Alugueis
+
+ALTER VIEW VerAlugueis AS
+SELECT DataInicio, DataFim, IdCliente, 
+FROM Alugueis
+
+
+ALTER VIEW VerAlugueis AS
+SELECT IdVeiculo AS Veiculo
+FROM Alugueis
+
+SELECT * FROM VerAlugueis

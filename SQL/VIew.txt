@@ -1,0 +1,52 @@
+ao planejar um evento, é possível construir um banco de dados
+
+                 O QUE É
+View é uma maneira alternativa de ver dados de 
+uma ou mais entidades numa tabela de um banco de dados base de dados, ou seja
+é uma tabela virtual para consultas armazenadas.
+
+Quando informações são consultadas com SELECT, os dados são executados de
+maneira rápida por conta de ser armazenado na memória cache
+               O QUE PODE FAZER
+Podem também com algumas aplicações de restrição:  !!Restrição usuário x dados
+!!Restrição usuário x domínio;(um usuário específico a colunas (domínios) 
+específicas de uma tabela.) !!Associar vários domínios formando uma 
+única entidade;(Formar uma tabela com várias "JOIN" encapsuladas em uma view)
+!!Agregar informações, em vez de fornecer detalhes;(Podemos apresentar um 
+somatório de despesas em ligações de um determinado usuário, restringindo 
+acesso aos detalhes da conta.)
+             COMO USAR
+Ao criar um banco num exemplo USE NOME_DO_BANCO
+GO
+SELECT * FROM information_schema.tables
+GO
+Serão apresentados quatro domínios: !!Table_Catalog;(o nome do banco, dono 
+(owner) dos objetos;) !!Table_Schema;(Informa o owner fisico do objeto;) 
+!!Table_Name;(o nome físico de referência do objeto;) !!Table_Type;(o tipo do objeto;)
+!!Obs:, WITH ENCRYPTION, encripta os códigos da view, não possibilitando a edição 
+por outro usuário,  para desencriptar, lembre o comando que foi escondido para 
+retornar a view sem a criptação. 
+Vamos criar uma view para o retorno de informações.
+CREATE VIEW nome_view AS
+SELECT coluna1, coluna2, ...
+FROM nome_tabela
+WHERE condição;
+
+Dando tudo certo com as consistências, execute a view da seguinte maneira:
+
+SELECT * FROM nome_view
+
+             PORQUE USAR
+As vantagens de se usar views são: !!Economizar tempo com retrabalho;(Você não 
+precisar escrever aquela instrução enorme. Escreva uma vez e armazene!)
+!!Velocidade de acesso às informações;(Uma vez compilada, os dados são 
+armazenados na tabela temporária (virtual)) !!Mascarar complexidade do banco de dados;
+(As views isolam do usuário a complexidade do banco de dados, permitindo aos devs 
+a capacidade de alterar a estrutura sem afetar a interação do usuário com o banco de dados.)
+!!Simplifica o gerenciamento de permissão de usuários;(os proprietários de bancos de dados 
+podem conceder permissões para que os usuários consultem dados somente através de views.)
+!!Organizar dados a serem exportados para outros aplicativos;(criar uma view baseada em uma 
+consulta complexa, que associe até 32 tabelas e depois exportar dados para outro aplicativo
+para análise adicional).
+          BIBLIOGRAFIA
+https://www.devmedia.com.br/introducao-a-views/1614

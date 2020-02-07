@@ -45,6 +45,8 @@ CREATE TABLE Evento (
 	,IdTipoEvento INT FOREIGN KEY REFERENCES TipoEvento (IdTipoEvento)
 );
 
+SELECT * FROM Presenca
+
 CREATE TABLE Presenca (
 	IdPresenca INT PRIMARY KEY IDENTITY
 	,IdUsuario INT FOREIGN KEY REFERENCES Usuario (IdUsuario)

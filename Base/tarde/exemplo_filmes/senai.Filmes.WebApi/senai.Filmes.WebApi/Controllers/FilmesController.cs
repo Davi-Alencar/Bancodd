@@ -26,12 +26,13 @@ namespace senai.Filmes.WebApi.Controllers
         [HttpGet("{id}")]
         public IActionResult ObterPorId(int id)
         {
-            FilmeDomain filmeBuscado = _filmeRepository.BuscarPorId(id);
+            FilmeDomain filmeBuscado  = _filmeRepository.BuscarPorId(id);
 
-            if (filmeBuscado == null)
+            if(filmeBuscado == null)
             {
-                return NotFound("Nenhum filme encontrado");
+                return NotFound("Nenhum filme encontrado!");
             }
+
             return Ok(filmeBuscado);
         }
     }

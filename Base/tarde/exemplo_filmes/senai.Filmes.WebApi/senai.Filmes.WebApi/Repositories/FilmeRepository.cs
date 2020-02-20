@@ -12,6 +12,42 @@ namespace senai.Filmes.WebApi.Repositories
     {
         private string stringConexao = "Data Source=DEV8\\SQLEXPRESS; initial catalog=Filmes_tarde; user Id=sa; pwd=sa@132";
 
+        public List<FilmeDomain> Listar()
+        {
+            List<FilmeDomain> filmes = new List<FilmeDomain>();
+
+            using (SqlConnection Conexao = new SqlConnection(stringConexao))
+            {
+                string querySelecionarTudo = "SELECT * FROM Filmes";
+
+                Conexao.Open();
+
+                SqlDataReader Leitor;
+
+                using (SqlCommand Comando = new SqlCommand(querySelecionarTudo, Conexao))
+                {
+                    Leitor = Comando.ExecuteReader();
+
+                    while(Leitor.Read())
+                    {
+                        FilmeDomain filme = new FilmeDomain()
+                        {
+                            IdFilme = Convert.ToInt32(Leitor["IdFilme"]),
+
+                            Titulo = Leitor["Titulo"].ToString()
+                        };
+
+                        filmes.Add(filme);
+                    }
+
+                }
+            }
+
+        }
+    
+
+
+
         public FilmeDomain BuscarPorId(int id)
         {
             using (SqlConnection Conexao = new SqlConnection(stringConexao))

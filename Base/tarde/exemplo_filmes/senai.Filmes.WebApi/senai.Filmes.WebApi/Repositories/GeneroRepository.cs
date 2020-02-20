@@ -217,7 +217,7 @@ namespace senai.Filmes.WebApi.Repositories
                 // Declara o SqlCommand passando o comando a ser executado e a conexão
                 using (SqlCommand cmd = new SqlCommand(querySelectAll, con))
                 {
-                    // Executa a query
+                    // Executa a query [{.}{.}]
                     rdr = cmd.ExecuteReader();
 
                     // Enquanto houver registros para ler, o laço se repete
@@ -227,7 +227,7 @@ namespace senai.Filmes.WebApi.Repositories
                         GeneroDomain genero = new GeneroDomain
                         {
                             // Atribui à propriedade IdGenero o valor da primeira coluna da tabela do banco
-                            IdGenero = Convert.ToInt32(rdr[0]),
+                            IdGenero = Convert.ToInt32(rdr[0]), //0 = Primeira coluna de uma tabela//
 
                             // Atribui à propriedade Nome o valor da coluna "Nome" da tabela do banco
                             Nome = rdr["Nome"].ToString()

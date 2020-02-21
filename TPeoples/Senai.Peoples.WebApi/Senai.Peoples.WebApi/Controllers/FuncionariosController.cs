@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Senai.Peoples.WebApi.Domains;
 using Senai.Peoples.WebApi.Interfaces;
 using Senai.Peoples.WebApi.Repositories;
 
@@ -23,7 +24,7 @@ namespace Senai.Peoples.WebApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<FuncionarioDomain> Get()
+        public IEnumerable<FuncionariosDomain> Get()
         {
 
             return _funcionarioRepository.Listar();
@@ -32,27 +33,27 @@ namespace Senai.Peoples.WebApi.Controllers
         [HttpGet("{id}")]
         public IActionResult ObterPorId(int id)
         {
-            FuncionarioDomain funcionarioBuscado = _funcionarioRepository.BuscarPorId(id);
+            FuncionariosDomain funcionarioBuscado = _funcionarioRepository.BuscarPorId(id);
 
             if (funcionarioBuscado == null)
             {
-                return NotFound("Nenhum gênero encontrado");
+                return NotFound("Nenhum funcionário encontrado");
             }
             return Ok(funcionarioBuscado);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Deletar(int id)
         {
             _funcionarioRepository.Deletar(id);
 
-            return Ok("Gênero deletado");
+            return Ok("Funcionário deletado");
         }
 
         [HttpPut("{id}")]
-        public IActionResult PutIdUrl(int id, FuncionarioDomain generoAtualizado)
+        public IActionResult PutIdUrl(int id, FuncionariosDomain funcionarioAtualizado)
         {
-            FuncionarioDomain funcionarioBuscado = _funcionarioRepository.BuscarPorId(id);
+            FuncionariosDomain funcionarioBuscado = _funcionarioRepository.BuscarPorId(id);
 
             if (funcionarioBuscado == null)
             {
@@ -60,7 +61,7 @@ namespace Senai.Peoples.WebApi.Controllers
                     (
                         new
                         {
-                            mensagem = "Gênero não encontrado",
+                            mensagem = "Funcionário não encontrado",
                             erro = true
                         }
                     );
@@ -79,9 +80,9 @@ namespace Senai.Peoples.WebApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult PutIdCorpo(GeneroDomain generoAtualizado)
+        public IActionResult PutIdCorpo(FuncionariosDomain funcionarioAtualizado)
         {
-            FuncionarioDomain funcionarioBuscado = _funcionarioRepository.BuscarPorId(funcionarioAtualizado.IdGenero);
+            FuncionariosDomain funcionarioBuscado = _funcionarioRepository.BuscarPorId(funcionarioAtualizado.IdFuncionario);
 
             if (funcionarioBuscado != null)
             {
@@ -102,14 +103,14 @@ namespace Senai.Peoples.WebApi.Controllers
                 (
                     new
                     {
-                        mensagem = "Gênero não encontrado",
+                        mensagem = "Funcionário não encontrado",
                         erro = true
                     }
                 );
         }
 
         [HttpPost]
-        public IActionResult Post(FuncionarioDomain novoFuncionario)
+        public IActionResult Post(FuncionariosDomain novoFuncionario)
         {
             _funcionarioRepository.Cadastrar(novoFuncionario);
 

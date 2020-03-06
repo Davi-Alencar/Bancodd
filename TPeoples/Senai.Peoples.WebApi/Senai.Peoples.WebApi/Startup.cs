@@ -27,10 +27,10 @@ namespace Senai.Peoples.WebApi
 
             app.UseMvc();
 
-            //app.Run(async (context) =>//
+            //app.Run(async (context) =>
             //{
-            // await context.Response.WriteAsync("Hello World!");//
-            //});//
+            // await context.Response.WriteAsync("Hello World!");
+            //});
         }
     }
 }
